@@ -1,0 +1,37 @@
+---
+import Nav from '../components/Nav.astro';
+import ProjectHeader from '../components/ProjectHeader.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+export interface Props {
+	title: string;
+    projectName: string;
+	projectsub: string;
+    href: string;
+}
+
+const { title, projectName, projectsub, href } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class=" h-full overflow-hidden">
+        <Nav />
+        <div class="flex gap-3 h-screen">
+            <Sidebar />
+            <div class="w-full flex flex-col  overflow-y-scroll scroll-smooth">
+                <ProjectHeader projectName={projectName} projectsub={projectsub} href={href}/>
+                <div class="flex flex-col w-full mx-auto pt-5 pb-2 justify-between px-10 lg:px-20 items-center max-w-6xl">
+                    <slot />
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

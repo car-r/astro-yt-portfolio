@@ -1,0 +1,49 @@
+---
+export interface Props {
+	projectName: string;
+	projectsub: string;
+    href: string;
+}
+
+const { projectName, projectsub, href } = Astro.props;
+console.log(Astro.props)
+---
+
+<header class="w-full border-b border-b-neutral-300" id="home">
+    <!-- Banner image -->
+    <div class="">
+        <img src={'/assets/codingcarson.jpg'}  class="object-cover max-h-48 w-full"/>
+    </div>
+    <div class="flex mx-auto pt-5 pb-2 justify-between px-10 lg:px-20 items-center max-w-6xl">
+        <div class="flex gap-6 items-center">
+            <img src={'/assets/headshot.png'} alt="" class="h-20 w-20 rounded-full">
+            <div class="w-full ">
+                <h1 class="text-xl lg:text-2xl ">{projectName}</h1>
+                <p class="text-neutral-600 text-base">{projectsub}</p>
+            </div>
+        </div>
+        <div>
+            <div class="uppercase text-sm font-semibold tracking-wider px-4 py-2 rounded-full text-neutral-800 bg-neutral-200/60">Connect</div>
+        </div>
+        
+    </div>
+    <div class="flex mx-auto px-10 lg:px-20 items-center max-w-6xl ">
+        <a href={`${href}`} 
+        class={`py-4 px-8 border-b-4 ${Astro.url.pathname === href ? ' border-b-4 border-b-neutral-900 bg-neutral-200/60' : 'border-b-white'} `}
+        >
+            <div class="">
+                <p class="uppercase">Home</p>
+            </div>
+        </a>
+        <a href={`${href}/technologies`} class={`py-4 px-8 border-b-4 ${Astro.url.pathname.includes('technologies') ? ' border-b-4 border-b-neutral-900 bg-neutral-200/60' : 'border-b-white'} `}>
+            <div class="">
+                <p class="uppercase">Technologies</p>
+            </div>
+        </a>
+        <a href="/about" class={`py-4 px-8 border-b-4 ${Astro.url.pathname.includes('github') ? ' border-b-4 border-b-neutral-900 bg-neutral-200/60' : 'border-b-white'} `}>
+            <div class="">
+                <p class="uppercase">Github</p>
+            </div>
+        </a>
+    </div>
+</header>
